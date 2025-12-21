@@ -115,8 +115,9 @@ btnGetLayer.addEventListener('click', () => {
             // Enable upscale if API key is present (or check later)
             btnUpscale.disabled = false;
         } catch (e) {
-            console.error(e);
-            showToast("Error parsing layer data.");
+            console.error("Parsing Error:", e);
+            console.error("Raw Result:", result);
+            showToast("Error parsing layer data: " + e.message);
         }
     });
 });

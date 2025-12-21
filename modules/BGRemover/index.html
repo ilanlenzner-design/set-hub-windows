@@ -13,7 +13,7 @@
         <!-- Header -->
         <div class="header">
             <h1>BG Remover</h1>
-            <button id="settingsBtn" class="icon-btn" title="Settings">✨</button>
+            <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
         </div>
 
         <!-- Settings Panel -->
@@ -65,24 +65,24 @@
 
     <script src="js/CSInterface.js"></script>
     <script src="js/main.js"></script>
-<script>
-(function() {
-    function forceUpdate() {
-        window.dispatchEvent(new Event('resize'));
-        document.body.click();
-        var selects = document.getElementsByTagName("select");
-        if (selects.length > 0) {
-            var event = new Event('change', { bubbles: true });
-            selects[0].dispatchEvent(event);
-        }
-    }
-    window.addEventListener('load', function() {
-        forceUpdate();
-        setTimeout(forceUpdate, 500);
-        setTimeout(forceUpdate, 1500);
-    });
-})();
-</script></body>
+    <script>
+        (function () {
+            function forceUpdate() {
+                window.dispatchEvent(new Event('resize'));
+                document.body.click();
+                var selects = document.getElementsByTagName("select");
+                if (selects.length > 0) {
+                    var event = new Event('change', { bubbles: true });
+                    selects[0].dispatchEvent(event);
+                }
+            }
+            window.addEventListener('load', function () {
+                forceUpdate();
+                setTimeout(forceUpdate, 500);
+                setTimeout(forceUpdate, 1500);
+            });
+        })();
+    </script>
+</body>
 
 </html>
-
