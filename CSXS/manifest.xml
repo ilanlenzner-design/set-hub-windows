@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ExtensionManifest Version="7.0" ExtensionBundleId="com.sett.hub" ExtensionBundleVersion="1.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   
@@ -69,7 +69,7 @@
           <ScriptPath>./modules/AIImageExpander/jsx/hostscript.jsx</ScriptPath>
            <CEFCommandLine>
             <Parameter>--enable-nodejs</Parameter>
-            
+            <Parameter>--mixed-context</Parameter>
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
@@ -208,6 +208,7 @@
           <ScriptPath>./modules/SonicForgeFX/host/index.jsx</ScriptPath>
           <CEFCommandLine>
             <Parameter>--enable-nodejs</Parameter>
+            <Parameter>--mixed-context</Parameter>
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
@@ -253,9 +254,9 @@
           <ScriptPath>./modules/ElevenLabsVoice/host/index.jsx</ScriptPath>
            <CEFCommandLine>
             <Parameter>--enable-nodejs</Parameter>
+            <Parameter>--mixed-context</Parameter>
             <Parameter>--enable-media-stream</Parameter>
-          
-            <Parameter>--mixed-context</Parameter></CEFCommandLine>
+          </CEFCommandLine>
         </Resources>
         <Lifecycle>
            <AutoVisible>true</AutoVisible>

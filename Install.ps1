@@ -16,16 +16,22 @@ Write-Host "========================================" -ForegroundColor Cyan
 $sourceDir = $PSScriptRoot
 $destDir = "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\sett-hub"
 
-# 3. Enable PlayerDebugMode (CSXS 10 to 17)
+# 3. Enable PlayerDebugMode (CSXS 7 to 20)
 Write-Host "`n[1/4] Enabling Adobe Debug Mode..." -ForegroundColor Cyan
-for ($i = 10; $i -le 17; $i++) {
-    $regPath = "HKCU:\Software\Adobe\CSXS.$i"
-    if (-not (Test-Path $regPath)) {
-        New-Item -Path $regPath -Force | Out-Null
+$ranges = 7..20
+foreach ($i in $ranges) {
+    # Current User
+    $regPathCU = "HKCU:\Software\Adobe\CSXS.$i"
+    if (-not (Test-Path $regPathCU)) { New-Item -Path $regPathCU -Force | Out-Null }
+    Set-ItemProperty -Path $regPathCU -Name "PlayerDebugMode" -Value "1" -Force
+    
+    # Local Machine (as fallback for some environments)
+    $regPathLM = "HKLM:\SOFTWARE\Adobe\CSXS.$i"
+    if (Test-Path $regPathLM) {
+        Set-ItemProperty -Path $regPathLM -Name "PlayerDebugMode" -Value "1" -Force
     }
-    Set-ItemProperty -Path $regPath -Name "PlayerDebugMode" -Value "1" -Force
 }
-Write-Host "  [OK] Registry entries updated." -ForegroundColor Green
+Write-Host "  [OK] Registry entries updated (CSXS 7-20)." -ForegroundColor Green
 
 # 4. Copy Extension Files
 Write-Host "`n[2/4] Installing Extension Files..." -ForegroundColor Cyan
