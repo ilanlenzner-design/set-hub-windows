@@ -104,14 +104,27 @@
     <script src="js/elevenLabsService.js"></script>
     <script src="js/main.js"></script>
     <script>
+        /**
+         * Sett Suite Service (v16)
+         * Handles: Windows Rendering Fix & Safe Pulsed Focus
+         */
         (function () {
-            console.log("Applying Windows Initialization Fix...");
-
-            // Function to trigger a safe re-render/update
+            const csInterface = new CSInterface();
             function forceUpdate() {
-                console.log("Triggering Force Update...");
-
-                // 1. Dispatch a window resize event (often forces layout calc)
                 window.dispatchEvent(new Event('resize'));
-
-        // 2. Simulate a click on the wrapper to wake up event listeners
+                document.body.click();
+            }
+            window.addEventListener('load', function () {
+                forceUpdate();
+                setTimeout(forceUpdate, 500);
+                setTimeout(forceUpdate, 1500);
+            });
+            csInterface.addEventListener('com.sett.focus', function (event) {
+                if (event.data && event.data === csInterface.getExtensionID()) {
+                    window.focus();
+                    forceUpdate();
+                }
+            });
+        })();
+    </script>
+</body>

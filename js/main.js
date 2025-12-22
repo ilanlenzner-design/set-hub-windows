@@ -115,18 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof CSInterface !== 'undefined') {
                     const csInterface = new CSInterface();
 
-                    // v13 Definitive Focus logic
-                    const hammer = () => {
-                        csInterface.requestOpenExtension(tool.id);
+                    // v16 Safe Pulsed Focus
+                    // 1. Request AE to open/show extension (most stable way)
+                    csInterface.requestOpenExtension(tool.id);
+
+                    // 2. Dispatch gentle focus pings at 0ms and 250ms
+                    // This tells the panel to focus itself and refresh screen
+                    const ping = () => {
                         const event = new CSEvent('com.sett.focus', 'APPLICATION', 'PHXS', tool.id);
                         event.data = tool.id;
                         csInterface.dispatchEvent(event);
                     };
 
-                    // Triple-Tap for absolute Z-priority
-                    hammer(); // 0ms
-                    setTimeout(hammer, 150); // 150ms
-                    setTimeout(hammer, 400); // 400ms (The hammer)
+                    ping();
+                    setTimeout(ping, 250);
                 }
             });
 
@@ -136,3 +138,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Hub Error: " + e.message);
     }
 });
+```

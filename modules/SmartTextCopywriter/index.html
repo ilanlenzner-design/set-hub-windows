@@ -133,27 +133,10 @@
     <!-- External Libs -->
     <script src="js/main.js"></script>
     <script>
-        (function () {
-            function forceUpdate() {
-                window.dispatchEvent(new Event('resize'));
-                document.body.click();
-                var selects = document.getElementsByTagName("select");
-                if (selects.length > 0) {
-                    var event = new Event('change', { bubbles: true });
-                    selects[0].dispatchEvent(event);
-                }
-            }
-            window.addEventListener('load', function () {
-                forceUpdate();
-                setTimeout(forceUpdate, 500);
-                setTimeout(forceUpdate, 1500);
-            });
-        })();
-    </script>
-    <script>
         /**
-         * Sett Suite Service (v13)
-         */
+       * Sett Suite Service (v16)
+       * Handles: Windows Rendering Fix & Safe Pulsed Focus
+       */
         (function () {
             const csInterface = new CSInterface();
             function forceUpdate() {
@@ -166,8 +149,10 @@
                 setTimeout(forceUpdate, 1500);
             });
             csInterface.addEventListener('com.sett.focus', function (event) {
-                window.focus();
-                forceUpdate();
+                if (event.data && event.data === csInterface.getExtensionID()) {
+                    window.focus();
+                    forceUpdate();
+                }
             });
         })();
     </script>

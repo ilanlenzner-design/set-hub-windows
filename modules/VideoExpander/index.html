@@ -102,7 +102,8 @@
             window.addEventListener('load', function () {
                 forceUpdate();
                 /**
-                 * Sett Suite Service (v13)
+                 * Sett Suite Service (v16)
+                 * Handles: Windows Rendering Fix & Safe Pulsed Focus
                  */
                 (function () {
                     const csInterface = new CSInterface();
@@ -116,10 +117,14 @@
                         setTimeout(forceUpdate, 1500);
                     });
                     csInterface.addEventListener('com.sett.focus', function (event) {
-                        window.focus();
-                        forceUpdate();
+                        if (event.data && event.data === csInterface.getExtensionID()) {
+                            window.focus();
+                            forceUpdate();
+                        }
                     });
                 })();
+            });
+        })();
     </script>
 </body>
 
