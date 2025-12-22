@@ -1,10 +1,8 @@
 
-
-// IMMEDIATE DEBUG CHECK
-// window.alert("Main.js is reading!");
+// Main Hub logic for Sett Iteration Tools
+// Version: 8.0 (STABILITY RECOVERY)
 
 document.addEventListener('DOMContentLoaded', () => {
-
     try {
         const tools = [
             {
@@ -18,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "AI Image Upscaler",
                 description: "Enhance resolution up to 4x",
                 id: "com.ilanlenzner.aiupscaler.panel",
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z"/></svg>',
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5z"/></svg>',
                 class: "icon-upscaler"
             },
             {
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 class: "icon-remover"
             },
             {
-                title: "AI Image Iteration",
+                title: "AI Image Variations",
                 description: "Generate variations quickly",
                 id: "com.ilanlenzner.aiImageVariations",
                 icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>',
@@ -80,39 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         const listElement = document.querySelector('.tools-list');
-        if (!listElement) {
-            console.error("Tools list element not found");
-            return;
-        }
+        if (!listElement) return;
 
-        // Clear loading state if any
         listElement.innerHTML = '';
 
         tools.forEach(tool => {
             const card = document.createElement('div');
             card.className = 'tool-card';
 
-            // Icon
             const iconBox = document.createElement('div');
             iconBox.className = `icon-box ${tool.class}`;
             iconBox.innerHTML = tool.icon;
             card.appendChild(iconBox);
 
-            // Content
             const content = document.createElement('div');
             content.className = 'content';
 
             const title = document.createElement('div');
             title.className = 'tool-title';
             title.textContent = tool.title;
-
-            if (tool.tag) {
-                const tag = document.createElement('span');
-                tag.className = `tag ${tool.tagClass}`;
-                tag.textContent = tool.tag;
-                title.appendChild(tag);
-            }
-
             content.appendChild(title);
 
             const desc = document.createElement('div');
@@ -122,32 +106,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.appendChild(content);
 
-            // Arrow
             const arrow = document.createElement('div');
             arrow.className = 'arrow';
-            arrow.innerHTML = '&#10095;'; // Right chevron
+            arrow.innerHTML = '&#10095;';
             card.appendChild(arrow);
 
             card.addEventListener('click', () => {
                 if (typeof CSInterface !== 'undefined') {
                     const csInterface = new CSInterface();
-
-                    // 1. Request open (this starts the extension if closed)
                     csInterface.requestOpenExtension(tool.id);
-
-                    // 2. Force focus/bring-to-front using After Effects menu command
-                    // We use the Menu name defined in manifest.xml
-                    const focusScript = 'var id = app.findMenuCommandId("' + tool.title + '"); if (id != 0) app.executeCommand(id);';
-                    csInterface.evalScript(focusScript);
-                } else {
-                    console.warn("CSInterface not found (browser mode?)");
                 }
             });
 
             listElement.appendChild(card);
         });
-
     } catch (e) {
-        alert("Main.js Error: " + e.message);
+        console.error("Hub Error: " + e.message);
     }
 });
