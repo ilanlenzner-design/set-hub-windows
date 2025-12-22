@@ -101,23 +101,25 @@
             }
             window.addEventListener('load', function () {
                 forceUpdate();
-                setTimeout(forceUpdate, 500);
-                setTimeout(forceUpdate, 1500);
-            });
-        })();
-    </script>
-    <script>
-        (function () {
-            function forceUpdate() {
-                window.dispatchEvent(new Event('resize'));
-                document.body.click();
-            }
-            window.addEventListener('load', function () {
-                forceUpdate();
-                setTimeout(forceUpdate, 500);
-                setTimeout(forceUpdate, 1500);
-            });
-        })();
+                /**
+                 * Sett Suite Service (v13)
+                 */
+                (function () {
+                    const csInterface = new CSInterface();
+                    function forceUpdate() {
+                        window.dispatchEvent(new Event('resize'));
+                        document.body.click();
+                    }
+                    window.addEventListener('load', function () {
+                        forceUpdate();
+                        setTimeout(forceUpdate, 500);
+                        setTimeout(forceUpdate, 1500);
+                    });
+                    csInterface.addEventListener('com.sett.focus', function (event) {
+                        window.focus();
+                        forceUpdate();
+                    });
+                })();
     </script>
 </body>
 

@@ -115,14 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof CSInterface !== 'undefined') {
                     const csInterface = new CSInterface();
 
-                    // Pattern: Safe Auto-Focus
-                    // 1. First trigger ensures the panel is open
-                    csInterface.requestOpenExtension(tool.id);
-
-                    // 2. Second trigger (delayed) encourages AE to bring it to Z-front
-                    setTimeout(() => {
+                    // v13 Definitive Focus logic
+                    const hammer = () => {
                         csInterface.requestOpenExtension(tool.id);
-                    }, 100);
+                        const event = new CSEvent('com.sett.focus', 'APPLICATION', 'PHXS', tool.id);
+                        event.data = tool.id;
+                        csInterface.dispatchEvent(event);
+                    };
+
+                    // Triple-Tap for absolute Z-priority
+                    hammer(); // 0ms
+                    setTimeout(hammer, 150); // 150ms
+                    setTimeout(hammer, 400); // 400ms (The hammer)
                 }
             });
 

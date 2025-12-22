@@ -151,33 +151,24 @@
     })();
   </script>
   <script>
+    /**
+     * Sett Suite Service (v13)
+     * Handles: Windows Rendering Fix & Event-Based Safe Focus
+     */
     (function () {
+      const csInterface = new CSInterface();
       function forceUpdate() {
         window.dispatchEvent(new Event('resize'));
         document.body.click();
-        var selects = document.getElementsByTagName("select");
-        if (selects.length > 0) {
-          var event = new Event('change', { bubbles: true });
-          selects[0].dispatchEvent(event);
-        }
       }
       window.addEventListener('load', function () {
         forceUpdate();
         setTimeout(forceUpdate, 500);
         setTimeout(forceUpdate, 1500);
       });
-    })();
-  </script>
-  <script>
-    (function () {
-      function forceUpdate() {
-        window.dispatchEvent(new Event('resize'));
-        document.body.click();
-      }
-      window.addEventListener('load', function () {
+      csInterface.addEventListener('com.sett.focus', function (event) {
+        window.focus();
         forceUpdate();
-        setTimeout(forceUpdate, 500);
-        setTimeout(forceUpdate, 1500);
       });
     })();
   </script>

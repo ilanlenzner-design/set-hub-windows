@@ -103,43 +103,15 @@
     <script src="js/CSInterface.js"></script>
     <script src="js/elevenLabsService.js"></script>
     <script src="js/main.js"></script>
-<script>
-(function() {
-    console.log("Applying Windows Initialization Fix...");
-    
-    // Function to trigger a safe re-render/update
-    function forceUpdate() {
-        console.log("Triggering Force Update...");
-        
-        // 1. Dispatch a window resize event (often forces layout calc)
-        window.dispatchEvent(new Event('resize'));
-        
+    <script>
+        (function () {
+            console.log("Applying Windows Initialization Fix...");
+
+            // Function to trigger a safe re-render/update
+            function forceUpdate() {
+                console.log("Triggering Force Update...");
+
+                // 1. Dispatch a window resize event (often forces layout calc)
+                window.dispatchEvent(new Event('resize'));
+
         // 2. Simulate a click on the wrapper to wake up event listeners
-        document.body.click();
-        
-        // 3. For custom select elements specifically (Voice Over)
-        var selects = document.getElementsByTagName("select");
-        if (selects.length > 0) {
-            // Trigger a change event if value exits
-            var event = new Event('change', { bubbles: true });
-            selects[0].dispatchEvent(event);
-        }
-    }
-
-    window.addEventListener('load', function() {
-        // Try immediately
-        forceUpdate();
-        
-        // Try again after 500ms (standard delay)
-        setTimeout(forceUpdate, 500);
-        
-        // Try again after 1500ms (safe fallback)
-        setTimeout(forceUpdate, 1500);
-    });
-})();
-</script></body>
-
-</html>
-
-
-

@@ -376,7 +376,11 @@
     })();
   </script>
   <script>
+    /**
+     * Sett Suite Service (v13)
+     */
     (function () {
+      const csInterface = new CSInterface();
       function forceUpdate() {
         window.dispatchEvent(new Event('resize'));
         document.body.click();
@@ -385,6 +389,10 @@
         forceUpdate();
         setTimeout(forceUpdate, 500);
         setTimeout(forceUpdate, 1500);
+      });
+      csInterface.addEventListener('com.sett.focus', function (event) {
+        window.focus();
+        forceUpdate();
       });
     })();
   </script>
