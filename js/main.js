@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 class: "icon-iteration"
             },
             {
-                title: "AI Video Tool",
+                title: "AI Video Tool (Kling)",
                 description: "Create videos from text prompts",
                 id: "com.kling.extension.panel",
                 icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>',
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 class: "icon-voice"
             },
             {
-                title: "Smart Copywriter AI",
+                title: "Smart Copywriter",
                 description: "Generate & style ad copy instantly",
                 id: "com.antigravity.smartcopy.panel",
                 icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>',
@@ -128,11 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
             arrow.innerHTML = '&#10095;'; // Right chevron
             card.appendChild(arrow);
 
-            // Click Event
             card.addEventListener('click', () => {
                 if (typeof CSInterface !== 'undefined') {
                     const csInterface = new CSInterface();
+
+                    // 1. Request open (this starts the extension if closed)
                     csInterface.requestOpenExtension(tool.id);
+
+                    // 2. Force focus/bring-to-front using After Effects menu command
+                    // We use the Menu name defined in manifest.xml
+                    const focusScript = 'var id = app.findMenuCommandId("' + tool.title + '"); if (id != 0) app.executeCommand(id);';
+                    csInterface.evalScript(focusScript);
                 } else {
                     console.warn("CSInterface not found (browser mode?)");
                 }
