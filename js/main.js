@@ -114,7 +114,15 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('click', () => {
                 if (typeof CSInterface !== 'undefined') {
                     const csInterface = new CSInterface();
+
+                    // Pattern: Safe Auto-Focus
+                    // 1. First trigger ensures the panel is open
                     csInterface.requestOpenExtension(tool.id);
+
+                    // 2. Second trigger (delayed) encourages AE to bring it to Z-front
+                    setTimeout(() => {
+                        csInterface.requestOpenExtension(tool.id);
+                    }, 100);
                 }
             });
 
