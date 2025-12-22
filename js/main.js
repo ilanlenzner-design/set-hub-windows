@@ -138,4 +138,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Hub Error: " + e.message);
     }
 });
-```

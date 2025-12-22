@@ -77,7 +77,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Image Expander</Menu>
+<!-- <Menu>AI Image Expander</Menu> -->
               <Geometry>
             <Size><Height>800</Height><Width>1200</Width></Size>
           </Geometry>
@@ -101,7 +101,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Image Upscaler</Menu>
+<!-- <Menu>AI Image Upscaler</Menu> -->
               <Geometry>
             <Size><Height>800</Height><Width>500</Width></Size>
           </Geometry>
@@ -125,7 +125,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Background Remover</Menu>
+<!-- <Menu>AI Background Remover</Menu> -->
               <Geometry>
             <Size><Height>600</Height><Width>350</Width></Size>
           </Geometry>
@@ -149,7 +149,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Image Variations</Menu>
+<!-- <Menu>AI Image Variations</Menu> -->
               <Geometry>
             <Size><Height>800</Height><Width>500</Width></Size>
           </Geometry>
@@ -174,7 +174,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Video Tool (Kling)</Menu>
+<!-- <Menu>AI Video Tool (Kling)</Menu> -->
               <Geometry>
             <Size><Height>600</Height><Width>400</Width></Size>
           </Geometry>
@@ -198,7 +198,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Video Iteration</Menu>
+<!-- <Menu>AI Video Iteration</Menu> -->
               <Geometry>
             <Size><Height>600</Height><Width>400</Width></Size>
           </Geometry>
@@ -222,7 +222,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Sound FX</Menu>
+<!-- <Menu>AI Sound FX</Menu> -->
               <Geometry>
             <Size><Height>800</Height><Width>500</Width></Size>
           </Geometry>
@@ -246,7 +246,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Music Creation</Menu>
+<!-- <Menu>AI Music Creation</Menu> -->
               <Geometry>
             <Size><Height>600</Height><Width>800</Width></Size>
           </Geometry>
@@ -271,7 +271,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>AI Voiceover</Menu>
+<!-- <Menu>AI Voiceover</Menu> -->
               <Geometry>
             <Size><Height>600</Height><Width>400</Width></Size>
           </Geometry>
@@ -295,7 +295,7 @@
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
-           <Menu>Smart Copywriter</Menu>
+<!-- <Menu>Smart Copywriter</Menu> -->
               <Geometry>
             <Size><Height>600</Height><Width>400</Width></Size>
           </Geometry>
