@@ -121,7 +121,7 @@
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
-           <AutoVisible>false</AutoVisible>
+           <AutoVisible>true</AutoVisible>
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
@@ -170,7 +170,7 @@
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
-           <AutoVisible>false</AutoVisible>
+           <AutoVisible>true</AutoVisible>
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
@@ -194,7 +194,7 @@
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
-           <AutoVisible>false</AutoVisible>
+           <AutoVisible>true</AutoVisible>
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
@@ -218,7 +218,7 @@
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
-           <AutoVisible>false</AutoVisible>
+           <AutoVisible>true</AutoVisible>
         </Lifecycle>
         <UI>
            <Type>Panel</Type>
@@ -242,7 +242,7 @@
           </CEFCommandLine>
         </Resources>
         <Lifecycle>
-           <AutoVisible>false</AutoVisible>
+           <AutoVisible>true</AutoVisible>
         </Lifecycle>
         <UI>
            <Type>Panel</Type>

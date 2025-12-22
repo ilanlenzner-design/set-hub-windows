@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Image Expander</title>
-    <script src="./CSInterface.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index.css">
-    <link rel="stylesheet" href="./theme.css">
-    <style>
-        /* Essential Scrollbar Styles */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
-        #root { margin-top: 32px; }
-    </style>
-    <script>
-        // Error handling for debugging
-        window.onerror = function(msg, url, line, col, error) {
-            console.error("ERROR: " + msg + "\nFile: " + url + "\nLine: " + line);
-            return false;
-        };
-    </script>
-</head>
-<body class="bg-gray-900 text-white">
-    <div style="position: fixed; top: 8px; right: 12px; z-index: 9999;">
-        <img src="./logo.png" alt="Logo" style="height: 24px; width: auto;" />
-    </div>
-    
-    <!-- THE MOUNT POINT -->
-    <div id="root"></div>
 
-    <!-- MAIN REACT SCRIPT (Moved to bottom, type=module removed) -->
-    <script src="./assets/index.js" defer></script>
-    
-    <!-- UI RESTORATION SCRIPT (setupSelect logic) -->
-    <script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Image Expander</title>
+  <script src="./CSInterface.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index.css">
+  <link rel="stylesheet" href="./theme.css">
+  <style>
+    /* Essential Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280;
+    }
+
+    #root {
+      margin-top: 32px;
+    }
+  </style>
+  <script>
+    // Error handling for debugging
+    window.onerror = function (msg, url, line, col, error) {
+      console.error("ERROR: " + msg + "\nFile: " + url + "\nLine: " + line);
+      return false;
+    };
+  </script>
+</head>
+
+<body class="bg-gray-900 text-white">
+  <div style="position: fixed; top: 8px; right: 12px; z-index: 9999;">
+    <img src="./logo.png" alt="Logo" style="height: 24px; width: auto;" />
+  </div>
+
+  <!-- THE MOUNT POINT -->
+  <div id="root"></div>
+
+  <!-- MAIN REACT SCRIPT (Moved to bottom, type=module removed) -->
+  <script src="./assets/index.js" defer></script>
+
+  <!-- UI RESTORATION SCRIPT (setupSelect logic) -->
+  <script>
     (function () {
       function setupSelect(selElmnt) {
         if (selElmnt.parentNode.classList.contains('custom-select-container')) return;
@@ -132,25 +149,38 @@
 
       console.log("UI Restoration Script Ready.");
     })();
-    </script>
-<script>
-(function() {
-    function forceUpdate() {
+  </script>
+  <script>
+    (function () {
+      function forceUpdate() {
         window.dispatchEvent(new Event('resize'));
         document.body.click();
         var selects = document.getElementsByTagName("select");
         if (selects.length > 0) {
-            var event = new Event('change', { bubbles: true });
-            selects[0].dispatchEvent(event);
+          var event = new Event('change', { bubbles: true });
+          selects[0].dispatchEvent(event);
         }
-    }
-    window.addEventListener('load', function() {
+      }
+      window.addEventListener('load', function () {
         forceUpdate();
         setTimeout(forceUpdate, 500);
         setTimeout(forceUpdate, 1500);
-    });
-})();
-</script></body>
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      function forceUpdate() {
+        window.dispatchEvent(new Event('resize'));
+        document.body.click();
+      }
+      window.addEventListener('load', function () {
+        forceUpdate();
+        setTimeout(forceUpdate, 500);
+        setTimeout(forceUpdate, 1500);
+      });
+    })();
+  </script>
+</body>
+
 </html>
-
-
